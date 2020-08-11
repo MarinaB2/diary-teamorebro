@@ -110,6 +110,9 @@ public class EntryController {
             Optional<Entry> entryRepo = entryRepository.findById(id);
             Entry entry = entryRepo.get();
 
+            if (newEntry.title != null) {
+                entry.title = newEntry.title;
+            }
             if (newEntry.content != null) {
                 entry.content = newEntry.content;
             }
@@ -150,6 +153,7 @@ public class EntryController {
             Optional<Entry> entryRepo = entryRepository.findById(id);
             Entry entry = entryRepo.get();
 
+            entry.title = newEntry.title;
             entry.content = newEntry.content;
             entry.published = newEntry.published;
             entry.image = newEntry.image;

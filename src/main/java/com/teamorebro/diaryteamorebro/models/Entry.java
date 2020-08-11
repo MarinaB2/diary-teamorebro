@@ -15,6 +15,9 @@ public class Entry {
     public Integer id;
 
     @Column(nullable = false)
+    public String title;
+
+    @Column(nullable = false)
     public String content;
 
     @Column(nullable = false)
