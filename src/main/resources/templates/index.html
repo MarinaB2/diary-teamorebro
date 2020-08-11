@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/minty/bootstrap.min.css"
+      integrity="sha384-HqaYdAE26lgFCJsUF9TBdbZf7ygr9yPHtxtg37JshqVQi6CCAo6Qvwmgc5xclIiV" crossorigin="anonymous">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Diary team Orebro</title>
+</head>
+<body>
+<div class="jumbotron container text-center col-lg-8 col-lg-offset-3">
+
+    <h1>Your Contacts</h1>
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-xs-6 col-md-4">
+            <form action="/add" method="get">
+                <button class="btn btn-success">Add New Diary</button>
+            </form>
+        </div>
+    </div>
+    <br>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Content</th>
+            <th scope="col">Published</th>
+            <th scope="col">Image</th>
+            <th scope="col"></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody id="tableContents">
+        <tr th:each="entry : ${entries}">
+            <th scope="row" th:text="${diary.id}"></th>
+            <td th:text="${diary.content}"></td>
+            <td th:text="${diary.published}"></td>
+            <td th:text="${diary.image}"></td>
+            <td> <a th:href="@{/delete/(id=${diary.id})}" class="btn btn-outline-danger -btn-sm" id="deleteButton">Delete</a></td>
+            <td> <a th:href="@{/edit/(id=${diary.id})}" class="btn btn-outline-primary -btn-sm">Edit</a></td>
+        </tbody>
+    </table>
+
+    <br>
+</div>
+</body>
+</html>
