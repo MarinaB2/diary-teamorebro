@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Optional;
 
 @Controller
@@ -24,17 +26,37 @@ public class ViewController {
         return "/index";
     }
 
-    @GetMapping("/add")
-    public String addNewEntry() {
+    @GetMapping("/newEntry")
+    public String getAddNewEntryPage() {
         return "addEntry";
     }
 
+    @RequestMapping(value = "/add", method = {RequestMethod.POST, RequestMethod.GET})
+    public void addNewEntry(HttpServletResponse response, @RequestParam String title, String content) throws IOException {
+        Entry entry = new Entry();
+        entry.title=title;
+        entry.content = content;
+        entry.published = new Date();
+
+        entryService.addEntry(entry);
+        response.sendRedirect("/");
+    }
 
     @GetMapping("/edit")
     public String editEntry(@RequestParam int id, Model model) {
         Entry entry = entryService.getEntry(id);
         model.addAttribute("entry", entry);
         return "editEntry";
+    }
+
+    @RequestMapping(value = "/save", method = {RequestMethod.PUT, RequestMethod.GET})
+    public void saveChanges(HttpServletResponse response, @RequestParam int id, String title, String content) throws IOException {
+        Entry entry = entryService.getEntry(id);
+        entry.title = title;
+        entry.content = content;
+
+        entryService.addEntry(entry);
+        response.sendRedirect("/");
     }
 
     @RequestMapping(value = "/delete", method = {RequestMethod.DELETE, RequestMethod.GET})

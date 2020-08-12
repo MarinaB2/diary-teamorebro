@@ -9,12 +9,12 @@
 </head>
 <body>
 <div class="jumbotron container text-center col-lg-8 col-lg-offset-3">
-    <form class="form-group" onsubmit="return checkUserInput()">
+    <form class="form-group"  action="/add" method="post" onsubmit="return checkUserInput()">
         <div class="form-group">
             <h2  class="text-danger"><strong>Welcome</strong></h2>
-            <input type="text" class="form-control" placeholder="Write title here" id="title">
+            <input type="text" class="form-control" placeholder="Write title here" id="title" name="title">
             <br>
-            <textarea class="form-control" id="textarea" rows="3" placeholder="Content"></textarea>
+            <textarea class="form-control" id="content" name="content" rows="3" placeholder="Content"></textarea>
         </div>
 
         <div class="form-group">
