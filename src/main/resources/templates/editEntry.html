@@ -11,19 +11,16 @@
 <div class="jumbotron container text-center col-lg-8 col-lg-offset-3">
     <h2 class="text-danger">Edit Entry</h2>
     <br>
-    <form class="form-group" action="/save" method="put" onsubmit="return checkUserInput()">
+    <form class="form-group" action="/save" method="put" onsubmit="return checkUserInput()" enctype="multipart/form-data">
         <div class="form-group">
             <input type="hidden" th:value="${entry.id}" id="id" name="id">
             <input type="text" class="form-control" th:value="${entry.title}" id="title" name="title">
             <br>
             <textarea class="form-control" id="content" name="content" th:text="${entry.content}" rows="8" ></textarea>
         </div>
-
-        <div class="form-group">
-            <label for="exampleInputFile" style="float: left">Upload a photo</label>
-            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+            <label for="image" style="float: left">Upload a photo</label>
+            <input type="file" class="form-control-file" id="image" name="image" aria-describedby="fileHelp">
             <small id="fileHelp" class="form-text text-muted"></small>
-        </div>
         <br>
         <button type="submit" class="btn btn-outline-primary">Save changes</button>
     </form>
@@ -36,6 +33,7 @@
     function checkUserInput() {
         var title = document.getElementById("title").value;
         var content = document.getElementById("content").value;
+        var image = document.getElementById("image").value;
 
         if (title.length == 0) {
             alert("Title is mandatory!");
@@ -44,6 +42,7 @@
             alert("You have to write something in content!");
             return false;
         }
+
         alert("Saved changes!");
         submitOK = true;
     }
