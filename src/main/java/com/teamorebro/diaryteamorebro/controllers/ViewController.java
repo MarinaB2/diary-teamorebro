@@ -23,7 +23,7 @@ public class ViewController {
     @GetMapping("/")
     public String listEntries(Model model){
         model.addAttribute("entries", entryService.getAllEntries());
-        return "/index";
+        return "index";
     }
 
     @GetMapping("/newEntry")
