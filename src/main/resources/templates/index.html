@@ -34,6 +34,9 @@
                     augue
                     sodales porta. Vestibulum efficitur mi id felis fermentum venenatis. Nulla facilisi.</p>
 
+                <img class="card-img-top" th:src="@{'entry/image/' + ${entry.id}}">
+                <br>
+
                 <a th:href="@{/edit/(id=${entry.id})}" class="card-link" type="submit">Edit</a>
                 <a th:href="@{/delete/(id=${entry.id})}" class="card-link" type="submit">Delete</a>
             </div>

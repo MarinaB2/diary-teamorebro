@@ -2,14 +2,12 @@ package com.teamorebro.diaryteamorebro.controllers;
 
 import com.teamorebro.diaryteamorebro.models.Entry;
 import com.teamorebro.diaryteamorebro.services.EntryService;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +25,15 @@ public class ViewController {
     public String listEntries(Model model){
         model.addAttribute("entries", entryService.getAllEntries());
         return "index";
+    }
+
+    @GetMapping("/entry/image/{id}")
+    public void showProductImage(@PathVariable int id,
+                                 HttpServletResponse response) throws IOException {
+        response.setContentType("image/jpeg"); // Or whatever format you wanna use
+        Entry entry = entryService.getEntry(id);
+        InputStream is = new ByteArrayInputStream(entry.image);
+        IOUtils.copy(is, response.getOutputStream());
     }
 
     @GetMapping("/newEntry")
