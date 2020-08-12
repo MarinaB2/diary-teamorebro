@@ -13,13 +13,12 @@
     <br>
     <br>
 
-    <div class="row">
-        <div class="col-xs-6 col-md-4">
+    <div class="row float-right">
             <form action="/add" method="get">
-                <button type="submit" class="btn btn-danger" style="float: right">New Entry</button>
+                <button type="submit" class="btn btn-danger " >New Entry</button>
             </form>
-        </div>
     </div>
+    <br>
     <br>
 
     <div class="cards" th:each="entry:${entries}">

@@ -9,9 +9,9 @@
 </head>
 <body>
 <div class="jumbotron container text-center col-lg-8 col-lg-offset-3">
-    <h2>Edit Entry</h2>
+    <h2 class="text-danger">Edit Entry</h2>
     <br>
-    <form>
+    <form class="form-group" onsubmit="return checkUserInput()">
         <div class="form-group">
             <input type="text" class="form-control" th:value="${entry.title}" id="title">
             <br>
@@ -26,8 +26,27 @@
         <br>
         <button type="submit" class="btn btn-outline-primary">Save changes</button>
     </form>
-</div>
 
+    <form action="/" method="get">
+        <button  class="btn btn-outline-warning float-left">Back to start</button>
+    </form>
+</div>
+<script>
+    function checkUserInput() {
+        var title = document.getElementById("title").value;
+        var textarea = document.getElementById("textarea").value;
+
+        if (title.length == 0) {
+            alert("Title is mandatory!");
+            return false;
+        }else if (textarea.length == 0){
+            alert("You have to write something in content!");
+            return false;
+        }
+        alert("Saved changes!");
+        submitOK = true;
+    }
+</script>
 
 </body>
 </html>

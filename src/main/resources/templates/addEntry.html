@@ -9,24 +9,43 @@
 </head>
 <body>
 <div class="jumbotron container text-center col-lg-8 col-lg-offset-3">
-    <form>
+    <form class="form-group" onsubmit="return checkUserInput()">
         <div class="form-group">
-            <h2><strong>Welcome</strong></h2>
-            <input type="text" class="form-control" placeholder="Write title here" id="inputDefault">
+            <h2  class="text-danger"><strong>Welcome</strong></h2>
+            <input type="text" class="form-control" placeholder="Write title here" id="title">
             <br>
             <textarea class="form-control" id="textarea" rows="3" placeholder="Content"></textarea>
         </div>
 
         <div class="form-group">
-            <label for="exampleInputFile" style="float: left">Upload a photo</label>
-            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+            <label for="photo" style="float: left">Upload a photo</label>
+            <input type="file" class="form-control-file" id="photo" aria-describedby="fileHelp">
             <small id="fileHelp" class="form-text text-muted"></small>
         </div>
         <br>
         <button type="submit" class="btn btn-outline-primary">Publish</button>
     </form>
-</div>
 
+    <form action="/" method="get">
+        <button  class="btn btn-outline-warning float-left">Back to start</button>
+    </form>
+</div>
+<script>
+    function checkUserInput() {
+        var title = document.getElementById("title").value;
+        var textarea = document.getElementById("textarea").value;
+
+        if (title.length == 0) {
+            alert("Title is mandatory!");
+            return false;
+        }else if (textarea.length == 0){
+            alert("You have to write something in content!");
+            return false;
+        }
+        alert("Entry added!");
+        submitOK = true;
+    }
+</script>
 
 </body>
 </html>
