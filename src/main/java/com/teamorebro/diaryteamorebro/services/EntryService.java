@@ -33,4 +33,12 @@ public class EntryService {
     public void deleteEntry(int id) {
         entryRepository.deleteById(id);
     }
+
+    public void addEntry(Entry entry) {
+        entryRepository.save(entry);
+    }
+
+    public void updateEntry(Entry entry) {
+        entryRepository.save(entry);
+    }
 }
