@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/journal/bootstrap.min.css" integrity="sha384-vjBZc/DqIqR687k5rf6bUQ6IVSOxQUi9TcwtvULstA7+YGi//g3oT2qkh8W1Drx9" crossorigin="anonymous">
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/superhero/bootstrap.min.css"
+      integrity="sha384-HnTY+mLT0stQlOwD3wcAzSVAZbrBp141qwfR4WfTqVQKSgmcgzk+oP0ieIyrxiFO" crossorigin="anonymous">
 <head>
     <meta charset="UTF-8">
     <title>Diary team Orebro</title>
@@ -9,14 +9,14 @@
 <body>
 <div class="jumbotron container text-center col-lg-8 col-lg-offset-3">
 
-    <h1>Your Contacts</h1>
+    <h1 class="text-danger"><strong>Welcome to your diary</strong></h1>
     <br>
     <br>
 
     <div class="row">
         <div class="col-xs-6 col-md-4">
             <form action="/add" method="get">
-                <button class="btn btn-success">Add New Diary</button>
+                <button type="submit" class="btn btn-danger">Add new diary</button>
             </form>
         </div>
     </div>
