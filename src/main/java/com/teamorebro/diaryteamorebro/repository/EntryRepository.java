@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EntryRepository extends JpaRepository<Entry, Integer> {
 
-    Entry getById(String id);
+    Entry getById(int id);
+
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/journal/bootstrap.min.css" integrity="sha384-vjBZc/DqIqR687k5rf6bUQ6IVSOxQUi9TcwtvULstA7+YGi//g3oT2qkh8W1Drx9" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/journal/bootstrap.min.css"
+      integrity="sha384-vjBZc/DqIqR687k5rf6bUQ6IVSOxQUi9TcwtvULstA7+YGi//g3oT2qkh8W1Drx9" crossorigin="anonymous">
 
 <head>
     <meta charset="UTF-8">
@@ -9,30 +10,34 @@
 <body>
 <div class="jumbotron container text-center col-lg-8 col-lg-offset-3">
 
-    <h1>Your Contacts</h1>
+    <h1>My Diary</h1>
     <br>
     <br>
 
     <div class="row">
         <div class="col-xs-6 col-md-4">
             <form action="/add" method="get">
-                <button class="btn btn-success">Add New Diary</button>
+                <button class="btn btn-success" style="float: right">New Diary Entry</button>
             </form>
         </div>
     </div>
     <br>
 
-    <div class="card border-info mb-3" style="max-width: 20rem;" th:each="entry:${entries}" >
-        <div class="card-header" th:datetime="${entry.published}">date</div>
-        <div class="card-body">
-            <h4 class="card-title" th:text="${entry.title}">title</h4>
-            <p class="card-text" th:text="${entry.content}">jExample jExample vjExample jExample</p>
-            <img src=""  style="height: 200px; width: 100%; display: block;" alt="">
+    <div class="cards" th:each="entry:${entries}">
+        <div class="card">
             <div class="card-body">
+                <h4 class="card-title" th:text="${entry.title}">Card title</h4>
+                <h6 class="card-subtitle mb-2 text-muted" th:datetime="${entry.published}">2020-08-12</h6>
+                <p class="card-text" th:text="${entry.content}">SVestibulum sed interdum magna. Suspendisse justo nibh,
+                    interdum et lectus at, ultricies ultricies risus. Donec semper, orci ac fermentum maximus, ex neque
+                    dictum risus, in eleifend felis ligula sit amet leo. Suspendisse vitae lorem id sem convallis congue sit
+                    amet nec eros. Donec consectetur lacus velit, id sollicitudin ex vestibulum vitae. Duis a orci non augue
+                    sodales porta. Vestibulum efficitur mi id felis fermentum venenatis. Nulla facilisi.</p>
                 <a href="#" class="card-link">Card link</a>
                 <a href="#" class="card-link">Another link</a>
             </div>
         </div>
+        <br>
     </div>
 </div>
 </body>
