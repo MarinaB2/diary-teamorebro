@@ -24,7 +24,7 @@ public class ViewController {
         return "/index";
     }
 
-    @PostMapping("/add")
+    @GetMapping("/add")
     public String addNewEntry() {
         return "addEntry";
     }
