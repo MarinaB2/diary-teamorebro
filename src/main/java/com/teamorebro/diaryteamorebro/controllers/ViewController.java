@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
+import java.util.Optional;
 
 @Controller
 public class ViewController {
@@ -30,7 +30,7 @@ public class ViewController {
 
     @GetMapping("/edit")
     public String editEntry(@RequestParam int id, Model model) {
-
+        model.addAttribute("entry", entryService.getEntry(id));
         return "editEntry";
     }
 }

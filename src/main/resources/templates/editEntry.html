@@ -9,11 +9,13 @@
 </head>
 <body>
 <div class="jumbotron container text-center col-lg-8 col-lg-offset-3">
+    <h2>Edit Entry</h2>
+    <br>
     <form>
         <div class="form-group">
-            <h4><label for="textarea"><strong>You can edit here</strong></label></h4>
-            <input type="text" class="form-control" placeholder="Write title here" id="inputDefault">
-            <textarea class="form-control" id="textarea" rows="3" placeholder="Write diary here"></textarea>
+            <input type="text" class="form-control" th:value="${entry.title}" id="title">
+            <br>
+            <textarea class="form-control" id="content" th:text="${entry.content}" rows="8" ></textarea>
         </div>
 
         <div class="input-group mb-3">

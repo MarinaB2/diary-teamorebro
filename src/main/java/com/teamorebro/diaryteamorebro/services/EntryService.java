@@ -11,8 +11,6 @@ import java.util.*;
 @Service
 public class EntryService {
 
-    HashSet<Entry> entries = new HashSet<>();
-
     @Autowired
     DataSource dataSource;
 
@@ -23,8 +21,8 @@ public class EntryService {
 
     }
 
-    public Optional<Entry> getEntry(int id) {
-        return entryRepository.findById(id);
+    public Entry getEntry(int id) {
+        return entryRepository.findAll().get(id);
     }
 
     public List<Entry> getAllEntries() {
