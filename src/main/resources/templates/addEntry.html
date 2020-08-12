@@ -9,42 +9,45 @@
 </head>
 <body>
 <div class="jumbotron container text-center col-lg-8 col-lg-offset-3">
-    <form class="form-group"  action="/add" method="post" onsubmit="return checkUserInput()">
+    <h1 class="text-danger"><strong>Welcome</strong></h1>
+    <br>
+
+    <form class="form-group" action="/add" method="post" onsubmit="return checkUserInput()" enctype="multipart/form-data">
         <div class="form-group">
-            <h2  class="text-danger"><strong>Welcome</strong></h2>
+
             <input type="text" class="form-control" placeholder="Write title here" id="title" name="title">
             <br>
             <textarea class="form-control" id="content" name="content" rows="3" placeholder="Content"></textarea>
         </div>
 
-        <div class="form-group">
-            <label for="photo" style="float: left">Upload a photo</label>
-            <input type="file" class="form-control-file" id="photo" aria-describedby="fileHelp">
-            <small id="fileHelp" class="form-text text-muted"></small>
-        </div>
+        <label for="image" style="float: left">Upload image</label>
+        <input type="file" class="form-control-file" id="image" name="image" aria-describedby="fileHelp">
+        <small id="fileHelp" class="form-text text-muted"></small>
         <br>
         <button type="submit" class="btn btn-outline-primary">Publish</button>
     </form>
 
     <form action="/" method="get">
-        <button  class="btn btn-outline-warning float-left">Back to start</button>
+        <button class="btn btn-outline-warning float-left">Back to start</button>
     </form>
 </div>
 <script>
     function checkUserInput() {
         var title = document.getElementById("title").value;
-        var textarea = document.getElementById("textarea").value;
+        var content = document.getElementById("content").value;
+        var image = document.getElementById("image").value;
 
         if (title.length == 0) {
             alert("Title is mandatory!");
             return false;
-        }else if (textarea.length == 0){
+        } else if (content.length == 0) {
             alert("You have to write something in content!");
             return false;
         }
         alert("Entry added!");
         submitOK = true;
     }
+
 </script>
 
 </body>
