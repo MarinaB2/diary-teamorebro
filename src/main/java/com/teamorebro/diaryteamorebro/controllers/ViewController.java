@@ -30,10 +30,12 @@ public class ViewController {
     @GetMapping("/entry/image/{id}")
     public void showProductImage(@PathVariable int id,
                                  HttpServletResponse response) throws IOException {
-        response.setContentType("image/jpeg"); // Or whatever format you wanna use
+        response.setContentType("image/png"); // Or whatever format you wanna use
         Entry entry = entryService.getEntry(id);
-        InputStream is = new ByteArrayInputStream(entry.image);
-        IOUtils.copy(is, response.getOutputStream());
+        if(!(entry.image == null)){
+            InputStream is = new ByteArrayInputStream(entry.image);
+            IOUtils.copy(is, response.getOutputStream());
+        }
     }
 
     @GetMapping("/newEntry")
@@ -41,7 +43,7 @@ public class ViewController {
         return "addEntry";
     }
 
-    @RequestMapping(value = "/add", method = {RequestMethod.POST, RequestMethod.GET}, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @RequestMapping(value = "/add", method = {RequestMethod.POST, RequestMethod.GET} , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void addNewEntry(HttpServletResponse response, @RequestParam String title, String content, MultipartFile image) throws IOException {
         Entry entry = new Entry();
         entry.title = title;
@@ -65,16 +67,13 @@ public class ViewController {
 
     @RequestMapping(value = "/save", method = {RequestMethod.POST}, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void saveChanges(HttpServletResponse response, @RequestParam int id, String title, String content, MultipartFile image) throws IOException {
-
         Entry entry = entryService.getEntry(id);
         entry.title = title;
         entry.content = content;
-        entry.published = new Date();
 
         if(image != null) {
             entry.image = image.getBytes();
         }
-
 
         entryService.updateEntry(entry);
         response.sendRedirect("/");

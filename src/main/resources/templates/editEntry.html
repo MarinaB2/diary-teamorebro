@@ -16,11 +16,13 @@
             <input type="hidden" th:value="${entry.id}" id="id" name="id">
             <input type="text" class="form-control" th:value="${entry.title}" id="title" name="title">
             <br>
-            <textarea class="form-control" id="content" name="content" th:text="${entry.content}" rows="8" ></textarea>
+            <textarea class="form-control" id="content" name="content" th:text="${entry.content}" rows="8"></textarea>
         </div>
-            <label for="image" style="float: left">Upload a photo</label>
-            <input type="file" class="form-control-file" id="image" name="image" aria-describedby="fileHelp">
-            <small id="fileHelp" class="form-text text-muted"></small>
+
+        <label for="image" style="float: left">Upload a photo</label>
+        <input type="file" class="form-control-file" id="image" name="image" aria-describedby="fileHelp">
+        <small id="fileHelp" class="form-text text-muted"></small>
+
         <br>
         <button type="submit" class="btn btn-outline-primary">Save changes</button>
     </form>
@@ -35,14 +37,13 @@
         var content = document.getElementById("content").value;
         var image = document.getElementById("image").value;
 
-        if (title.length == 0) {
+        if (title.length === 0) {
             alert("Title is mandatory!");
             return false;
-        }else if (content.length == 0){
+        } else if (content.length === 0) {
             alert("You have to write something in content!");
             return false;
         }
-
         alert("Saved changes!");
         submitOK = true;
     }
