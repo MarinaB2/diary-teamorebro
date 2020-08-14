@@ -11,7 +11,7 @@
 <div class="jumbotron container text-center col-lg-8 col-lg-offset-3">
     <h2 class="text-danger">Edit Entry</h2>
     <br>
-    <form class="form-group" action="/save" method="put" onsubmit="return checkUserInput()" enctype="multipart/form-data">
+    <form class="form-group" action="/save" method="post" onsubmit="return checkUserInput()" enctype="multipart/form-data">
         <div class="form-group">
             <input type="hidden" th:value="${entry.id}" id="id" name="id">
             <input type="text" class="form-control" th:value="${entry.title}" id="title" name="title">
@@ -26,7 +26,7 @@
     </form>
 
     <form action="/" method="get">
-        <button  class="btn btn-outline-warning float-left">Back to start</button>
+        <button class="btn btn-outline-warning float-left">Back to start</button>
     </form>
 </div>
 <script>

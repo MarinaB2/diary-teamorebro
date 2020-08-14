@@ -63,7 +63,7 @@ public class ViewController {
         return "editEntry";
     }
 
-    @RequestMapping(value = "/save", method = {RequestMethod.PUT, RequestMethod.GET}, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @RequestMapping(value = "/save", method = {RequestMethod.POST}, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void saveChanges(HttpServletResponse response, @RequestParam int id, String title, String content, MultipartFile image) throws IOException {
 
         Entry entry = entryService.getEntry(id);
